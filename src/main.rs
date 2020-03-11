@@ -6,8 +6,16 @@ compile_error!("Meca only supports 64 bit Windows, macOS and Linux.");
 
 mod config;
 mod globals;
-mod metadata;
+mod ndk;
+
+use structopt::StructOpt;
+
+type Result<T> = std::result::Result<T, anyhow::Error>;
+
+#[derive(StructOpt, Debug)]
+struct Opt {}
 
 fn main() {
-    println!("Hello, world!");
+    let opt = Opt::from_args();
+    println!("{:#?}", opt);
 }
