@@ -1,7 +1,6 @@
 use crate::{config::Config, Result};
 use anyhow::Context;
 use serde::Deserialize;
-use std::collections::HashMap;
 
 #[derive(Deserialize)]
 pub struct VersionDownload {
@@ -11,6 +10,7 @@ pub struct VersionDownload {
 
 #[derive(Deserialize)]
 pub struct Version {
+    pub name: String,
     #[cfg_attr(target_os = "windows", serde(rename = "windows"))]
     #[cfg_attr(target_os = "macos", serde(rename = "darwin"))]
     #[cfg_attr(target_os = "linux", serde(rename = "linux"))]
@@ -20,8 +20,7 @@ pub struct Version {
 #[derive(Deserialize)]
 pub struct Metadata {
     pub terms: Option<String>,
-    #[serde(flatten)]
-    pub versions: HashMap<String, Version>,
+    pub versions: Vec<Version>,
 }
 
 impl Metadata {

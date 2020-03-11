@@ -11,6 +11,7 @@ pub static MECA_HOME: Lazy<PathBuf> = Lazy::new(|| match env::var_os("MECA_HOME"
 pub static MECA_CONFIG_PATH: Lazy<PathBuf> = Lazy::new(|| MECA_HOME.join("Config.toml"));
 
 #[derive(Deserialize, Serialize)]
+#[serde(default)]
 pub struct NdkConfig {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub selected: Option<String>,

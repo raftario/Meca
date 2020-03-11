@@ -1,171 +1,185 @@
 {
   "terms": "https://developer.android.com/studio/terms",
-  "r21": {
-    "windows": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r21-windows-x86_64.zip",
-      "checksum": "c61631eacbd40c30273b716a4e589c6877b85419"
+  "versions": [
+    {
+      "name": "r21",
+      "windows": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r21-windows-x86_64.zip",
+        "checksum": "c61631eacbd40c30273b716a4e589c6877b85419"
+      },
+      "darwin": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r21-darwin-x86_64.zip",
+        "checksum": "0d50636cc0e34ed3ba540d6d5818ea0cf10f16aa"
+      },
+      "linux": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r21-linux-x86_64.zip",
+        "checksum": "afc9c0b9faad222898ac8168c78ad4ccac8a1b5c"
+      }
     },
-    "darwin": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r21-darwin-x86_64.zip",
-      "checksum": "0d50636cc0e34ed3ba540d6d5818ea0cf10f16aa"
+    {
+      "name": "r20b",
+      "windows": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r20b-windows-x86_64.zip",
+        "checksum": "ead0846608040b8344ad2bc9bc721b88cf13fb8d"
+      },
+      "darwin": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r20b-darwin-x86_64.zip",
+        "checksum": "b51290ab69cb89de1f0ba108702277bc333b38be"
+      },
+      "linux": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r20b-linux-x86_64.zip",
+        "checksum": "d903fdf077039ad9331fb6c3bee78aa46d45527b"
+      }
     },
-    "linux": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r21-linux-x86_64.zip",
-      "checksum": "afc9c0b9faad222898ac8168c78ad4ccac8a1b5c"
+    {
+      "name": "r19c",
+      "windows": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r19c-windows-x86_64.zip",
+        "checksum": "c4cd8c0b6e7618ca0a871a5f24102e40c239f6a3"
+      },
+      "darwin": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r19c-darwin-x86_64.zip",
+        "checksum": "f46b8193109bba8a58e0461c1a48f4534051fb25"
+      },
+      "linux": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r19c-linux-x86_64.zip",
+        "checksum": "fd94d0be6017c6acbd193eb95e09cf4b6f61b834"
+      }
+    },
+    {
+      "name": "r18b",
+      "windows": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r18b-windows-x86_64.zip",
+        "checksum": "6b6d4138aaaad7166679fdfa4780e177f95cee6f"
+      },
+      "darwin": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r18b-darwin-x86_64.zip",
+        "checksum": "98cb9909aa8c2dab32db188bbdc3ac6207e09440"
+      },
+      "linux": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r18b-linux-x86_64.zip",
+        "checksum": "500679655da3a86aecf67007e8ab230ea9b4dd7b"
+      }
+    },
+    {
+      "name": "r17c",
+      "windows": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r17c-windows-x86_64.zip",
+        "checksum": "3e3b8d1650f9d297d130be2b342db956003f5992"
+      },
+      "darwin": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r17c-darwin-x86_64.zip",
+        "checksum": "f97e3d7711497e3b4faf9e7b3fa0f0da90bb649c"
+      },
+      "linux": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r17c-linux-x86_64.zip",
+        "checksum": "12cacc70c3fd2f40574015631c00f41fb8a39048"
+      }
+    },
+    {
+      "name": "r16b",
+      "windows": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r16b-windows-x86_64.zip",
+        "checksum": "f3f1909ed1052e98dda2c79d11c22f3da28daf25"
+      },
+      "darwin": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r16b-darwin-x86_64.zip",
+        "checksum": "e51e615449b98c716cf912057e2682e75d55e2de"
+      },
+      "linux": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip",
+        "checksum": "42aa43aae89a50d1c66c3f9fdecd676936da6128"
+      }
+    },
+    {
+      "name": "r15c",
+      "windows": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r15c-windows-x86_64.zip",
+        "checksum": "970bb2496de0eada74674bb1b06d79165f725696"
+      },
+      "darwin": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r15c-darwin-x86_64.zip",
+        "checksum": "ea4b5d76475db84745aa8828000d009625fc1f98"
+      },
+      "linux": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip",
+        "checksum": "0bf02d4e8b85fd770fd7b9b2cdec57f9441f27a2"
+      }
+    },
+    {
+      "name": "r14b",
+      "windows": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r14b-windows-x86_64.zip",
+        "checksum": "a625e8c599bccdb9061b61dcf3d1f1a01071613f"
+      },
+      "darwin": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r14b-darwin-x86_64.zip",
+        "checksum": "2bf582c43f6da16416e66203d158a6dfaba4277c"
+      },
+      "linux": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip",
+        "checksum": "becd161da6ed9a823e25be5c02955d9cbca1dbeb"
+      }
+    },
+    {
+      "name": "r13b",
+      "windows": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r13b-windows-x86_64.zip",
+        "checksum": "649d306559435c244cec5881b880318bb3dee53a"
+      },
+      "darwin": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r13b-darwin-x86_64.zip",
+        "checksum": "71fe653a7bf5db08c3af154735b6ccbc12f0add5"
+      },
+      "linux": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip",
+        "checksum": "0600157c4ddf50ec15b8a037cfc474143f718fd0"
+      }
+    },
+    {
+      "name": "r12b",
+      "windows": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r12b-windows-x86_64.zip",
+        "checksum": "337746d8579a1c65e8a69bf9cbdc9849bcacf7f5"
+      },
+      "darwin": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r12b-darwin-x86_64.zip",
+        "checksum": "e257fe12f8947be9f79c10c3fffe87fb9406118a"
+      },
+      "linux": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r12b-linux-x86_64.zip",
+        "checksum": "170a119bfa0f0ce5dc932405eaa3a7cc61b27694"
+      }
+    },
+    {
+      "name": "r11c",
+      "windows": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r11c-windows-x86_64.zip",
+        "checksum": "3d89deb97b3191c7e5555f1313ad35059479f071"
+      },
+      "darwin": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r11c-darwin-x86_64.zip",
+        "checksum": "4ce8e7ed8dfe08c5fe58aedf7f46be2a97564696"
+      },
+      "linux": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip",
+        "checksum": "de5ce9bddeee16fb6af2b9117e9566352aa7e279"
+      }
+    },
+    {
+      "name": "r10e",
+      "windows": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r10e-windows-x86_64.zip",
+        "checksum": "a29f3ae41fb02b64ca8ad2b0903f74356f953d9f"
+      },
+      "darwin": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r10e-darwin-x86_64.zip",
+        "checksum": "6be8598e4ed3d9dd42998c8cb666f0ee502b1294"
+      },
+      "linux": {
+        "link": "https://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip",
+        "checksum": "f692681b007071103277f6edc6f91cb5c5494a32"
+      }
     }
-  },
-  "r20b": {
-    "windows": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r20b-windows-x86_64.zip",
-      "checksum": "ead0846608040b8344ad2bc9bc721b88cf13fb8d"
-    },
-    "darwin": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r20b-darwin-x86_64.zip",
-      "checksum": "b51290ab69cb89de1f0ba108702277bc333b38be"
-    },
-    "linux": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r20b-linux-x86_64.zip",
-      "checksum": "d903fdf077039ad9331fb6c3bee78aa46d45527b"
-    }
-  },
-  "r19c": {
-    "windows": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r19c-windows-x86_64.zip",
-      "checksum": "c4cd8c0b6e7618ca0a871a5f24102e40c239f6a3"
-    },
-    "darwin": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r19c-darwin-x86_64.zip",
-      "checksum": "f46b8193109bba8a58e0461c1a48f4534051fb25"
-    },
-    "linux": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r19c-linux-x86_64.zip",
-      "checksum": "fd94d0be6017c6acbd193eb95e09cf4b6f61b834"
-    }
-  },
-  "r18b": {
-    "windows": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r18b-windows-x86_64.zip",
-      "checksum": "6b6d4138aaaad7166679fdfa4780e177f95cee6f"
-    },
-    "darwin": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r18b-darwin-x86_64.zip",
-      "checksum": "98cb9909aa8c2dab32db188bbdc3ac6207e09440"
-    },
-    "linux": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r18b-linux-x86_64.zip",
-      "checksum": "500679655da3a86aecf67007e8ab230ea9b4dd7b"
-    }
-  },
-  "r17c": {
-    "windows": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r17c-windows-x86_64.zip",
-      "checksum": "3e3b8d1650f9d297d130be2b342db956003f5992"
-    },
-    "darwin": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r17c-darwin-x86_64.zip",
-      "checksum": "f97e3d7711497e3b4faf9e7b3fa0f0da90bb649c"
-    },
-    "linux": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r17c-linux-x86_64.zip",
-      "checksum": "12cacc70c3fd2f40574015631c00f41fb8a39048"
-    }
-  },
-  "r16b": {
-    "windows": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r16b-windows-x86_64.zip",
-      "checksum": "f3f1909ed1052e98dda2c79d11c22f3da28daf25"
-    },
-    "darwin": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r16b-darwin-x86_64.zip",
-      "checksum": "e51e615449b98c716cf912057e2682e75d55e2de"
-    },
-    "linux": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip",
-      "checksum": "42aa43aae89a50d1c66c3f9fdecd676936da6128"
-    }
-  },
-  "r15c": {
-    "windows": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r15c-windows-x86_64.zip",
-      "checksum": "970bb2496de0eada74674bb1b06d79165f725696"
-    },
-    "darwin": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r15c-darwin-x86_64.zip",
-      "checksum": "ea4b5d76475db84745aa8828000d009625fc1f98"
-    },
-    "linux": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip",
-      "checksum": "0bf02d4e8b85fd770fd7b9b2cdec57f9441f27a2"
-    }
-  },
-  "r14b": {
-    "windows": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r14b-windows-x86_64.zip",
-      "checksum": "a625e8c599bccdb9061b61dcf3d1f1a01071613f"
-    },
-    "darwin": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r14b-darwin-x86_64.zip",
-      "checksum": "2bf582c43f6da16416e66203d158a6dfaba4277c"
-    },
-    "linux": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip",
-      "checksum": "becd161da6ed9a823e25be5c02955d9cbca1dbeb"
-    }
-  },
-  "r13b": {
-    "windows": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r13b-windows-x86_64.zip",
-      "checksum": "649d306559435c244cec5881b880318bb3dee53a"
-    },
-    "darwin": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r13b-darwin-x86_64.zip",
-      "checksum": "71fe653a7bf5db08c3af154735b6ccbc12f0add5"
-    },
-    "linux": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip",
-      "checksum": "0600157c4ddf50ec15b8a037cfc474143f718fd0"
-    }
-  },
-  "r12b": {
-    "windows": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r12b-windows-x86_64.zip",
-      "checksum": "337746d8579a1c65e8a69bf9cbdc9849bcacf7f5"
-    },
-    "darwin": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r12b-darwin-x86_64.zip",
-      "checksum": "e257fe12f8947be9f79c10c3fffe87fb9406118a"
-    },
-    "linux": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r12b-linux-x86_64.zip",
-      "checksum": "170a119bfa0f0ce5dc932405eaa3a7cc61b27694"
-    }
-  },
-  "r11c": {
-    "windows": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r11c-windows-x86_64.zip",
-      "checksum": "3d89deb97b3191c7e5555f1313ad35059479f071"
-    },
-    "darwin": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r11c-darwin-x86_64.zip",
-      "checksum": "4ce8e7ed8dfe08c5fe58aedf7f46be2a97564696"
-    },
-    "linux": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip",
-      "checksum": "de5ce9bddeee16fb6af2b9117e9566352aa7e279"
-    }
-  },
-  "r10e": {
-    "windows": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r10e-windows-x86_64.zip",
-      "checksum": "a29f3ae41fb02b64ca8ad2b0903f74356f953d9f"
-    },
-    "darwin": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r10e-darwin-x86_64.zip",
-      "checksum": "6be8598e4ed3d9dd42998c8cb666f0ee502b1294"
-    },
-    "linux": {
-      "link": "https://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip",
-      "checksum": "f692681b007071103277f6edc6f91cb5c5494a32"
-    }
-  }
+  ]
 }

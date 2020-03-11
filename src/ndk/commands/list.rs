@@ -15,8 +15,8 @@ impl Command {
         STDOUT.write_line(
             &metadata
                 .versions
-                .keys()
-                .map(|s| s.as_str().to_owned())
+                .into_iter()
+                .map(|v| v.name)
                 .collect::<Vec<String>>()
                 .join("\n"),
         )?;
