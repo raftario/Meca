@@ -27,9 +27,11 @@ impl Metadata {
     pub fn fetch() -> Result<Self> {
         let config = Config::read()?;
         let contents = ureq::get(&config.ndk.metadata_url)
+            .set("Cache-Control", "no-cache, no-store")
             .call()
             .into_string()
             .context("Can't fetch NDK versions metadata")?;
+
         serde_json::from_str(&contents).context("Invalid NDK versions metadata")
     }
 }
