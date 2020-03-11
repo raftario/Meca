@@ -9,6 +9,8 @@ mod config;
 mod globals;
 mod ndk;
 
+use crate::globals::STDERR;
+use std::process;
 use structopt::StructOpt;
 
 type Result<T> = std::result::Result<T, anyhow::Error>;
@@ -26,7 +28,24 @@ pub enum Command {
     Ndk(ndk::commands::Command),
 }
 
+impl Opt {
+    fn run(self) -> Result<()> {
+        match self.cmd {
+            Command::Ndk(ndk) => ndk.run(),
+        }
+    }
+}
+
 fn main() {
     let opt = Opt::from_args();
+
+    #[cfg(debug_assertions)]
     println!("{:#?}", opt);
+
+    if let Err(e) = opt.run() {
+        STDERR.write_line(&format!("{:#}", e)).unwrap_or_else(|_| {
+            process::exit(-1);
+        });
+        process::exit(1);
+    }
 }

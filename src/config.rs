@@ -13,10 +13,10 @@ pub static MECA_CONFIG_PATH: Lazy<PathBuf> = Lazy::new(|| MECA_HOME.join("Config
 #[derive(Deserialize, Serialize)]
 pub struct NdkConfig {
     #[serde(skip_serializing_if = "Option::is_none")]
-    selected: Option<String>,
+    pub selected: Option<String>,
     #[serde(skip_serializing_if = "Vec::is_empty")]
-    installed: Vec<String>,
-    metadata_url: String,
+    pub installed: Vec<String>,
+    pub metadata_url: String,
 }
 
 impl Default for NdkConfig {
@@ -34,11 +34,11 @@ impl Default for NdkConfig {
 #[derive(Deserialize, Serialize, Default)]
 #[serde(default)]
 pub struct Config {
-    ndk: NdkConfig,
+    pub ndk: NdkConfig,
 }
 
 impl Config {
-    fn read() -> Result<Self> {
+    pub fn read() -> Result<Self> {
         if !MECA_HOME.exists() {
             fs::create_dir(&*MECA_HOME).context("Can't create `MECA_HOME`")?;
         }
@@ -52,7 +52,7 @@ impl Config {
             Ok(config)
         }
     }
-    fn write(&self) -> Result<()> {
+    pub fn write(&self) -> Result<()> {
         let contents = toml::to_string(&self)?;
         fs::write(&*MECA_CONFIG_PATH, &contents).context("Can't write global Meca config")
     }

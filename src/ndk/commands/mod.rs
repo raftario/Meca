@@ -10,6 +10,7 @@ mod gdb;
 mod stack;
 mod which;
 
+use crate::Result;
 use structopt::StructOpt;
 
 #[derive(StructOpt, Debug)]
@@ -22,4 +23,12 @@ pub struct Command {
 pub enum SubCommand {
     /// Lists available and/or installed NDKs
     List(list::Command),
+}
+
+impl Command {
+    pub fn run(self) -> Result<()> {
+        match self.cmd {
+            SubCommand::List(list) => list.run(),
+        }
+    }
 }
