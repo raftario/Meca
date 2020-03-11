@@ -21,6 +21,8 @@ pub struct Command {
 
 #[derive(StructOpt, Debug)]
 pub enum SubCommand {
+    /// Installs a new NDK
+    Install(install::Command),
     /// Lists available and/or installed NDKs
     List(list::Command),
 }
@@ -28,6 +30,7 @@ pub enum SubCommand {
 impl Command {
     pub fn run(self) -> Result<()> {
         match self.cmd {
+            SubCommand::Install(install) => install.run(),
             SubCommand::List(list) => list.run(),
         }
     }
