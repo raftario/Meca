@@ -1,5 +1,6 @@
 use crate::{config::Config, Result};
 use anyhow::Context;
+use indicatif::ProgressBar;
 use serde::Deserialize;
 
 #[derive(Deserialize)]
@@ -33,5 +34,12 @@ impl Metadata {
             .context("Can't fetch NDK versions metadata")?;
 
         serde_json::from_str(&contents).context("Invalid NDK versions metadata")
+    }
+    pub fn fetch_with_progress() -> Result<Self> {
+        let p = ProgressBar::new_spinner();
+        p.set_message("Fetching metadata");
+        let result = Self::fetch()?;
+        p.finish_and_clear();
+        Ok(result)
     }
 }

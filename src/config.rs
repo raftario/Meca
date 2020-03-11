@@ -11,12 +11,18 @@ pub static MECA_HOME: Lazy<PathBuf> = Lazy::new(|| match env::var_os("MECA_HOME"
 pub static MECA_CONFIG_PATH: Lazy<PathBuf> = Lazy::new(|| MECA_HOME.join("Config.toml"));
 
 #[derive(Deserialize, Serialize)]
+pub struct NdkInstall {
+    pub name: String,
+    pub path: PathBuf,
+}
+
+#[derive(Deserialize, Serialize)]
 #[serde(default)]
 pub struct NdkConfig {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub selected: Option<String>,
     #[serde(skip_serializing_if = "Vec::is_empty")]
-    pub installed: Vec<String>,
+    pub installed: Vec<NdkInstall>,
     pub metadata_url: String,
 }
 
