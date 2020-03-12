@@ -10,14 +10,24 @@ pub struct Command {
 
 impl Command {
     pub fn run(self) -> Result<()> {
-        let installed: Vec<String> = Config::read()?
-            .ndk
-            .installs
-            .into_iter()
-            .map(|i| i.name)
-            .collect();
+        let config = Config::read()?;
+        let selected = config.ndk.selected;
+        let installed: Vec<String> = config.ndk.installs.into_iter().map(|i| i.name).collect();
+
         if self.installed {
-            STDOUT.write_line(&installed.join("\n"))?;
+            STDOUT.write_line(
+                &installed
+                    .into_iter()
+                    .map(|s| {
+                        if selected.as_ref() == Some(&s) {
+                            format!("{} (selected)", s)
+                        } else {
+                            s
+                        }
+                    })
+                    .collect::<Vec<String>>()
+                    .join("\n"),
+            )?;
             return Ok(());
         }
 
@@ -28,7 +38,9 @@ impl Command {
                 .versions
                 .into_iter()
                 .map(|v| {
-                    if installed.iter().any(|i| i == &v.name) {
+                    if selected.as_ref() == Some(&v.name) {
+                        format!("{} (selected)", v.name)
+                    } else if installed.iter().any(|i| i == &v.name) {
                         format!("{} (installed)", v.name)
                     } else {
                         v.name

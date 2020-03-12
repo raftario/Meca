@@ -10,7 +10,7 @@ The end goal is to create a fully featured package manager for NDK based project
 
 ## Progression
 
-- [ ] Download new NDKs
+- [x] Download new NDKs
 - [ ] Set active NDK
 - [ ] Manage existing NDKs
 - [ ] Generate Makefiles
