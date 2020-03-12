@@ -23,6 +23,10 @@ pub struct Command {
     #[structopt(short = "p", long = "path", name = "PATH")]
     /// Specifies the path of the installation directory
     path: Option<PathBuf>,
+
+    #[structopt(short = "s", long = "no-select")]
+    /// Avoids setting the new NDK as the currently used one
+    no_select: bool,
 }
 
 impl Command {
@@ -114,7 +118,10 @@ impl Command {
             name: version.name.clone(),
             path: install_dir,
         });
-        config.ndk.selected = Some(version.name.clone());
+        if !self.no_select {
+            config.ndk.selected = Some(version.name.clone());
+            STDOUT.write_line("Set new NDK as current.")?;
+        }
         config.write()?;
 
         STDOUT.write_line("Done.")?;
