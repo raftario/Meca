@@ -22,12 +22,12 @@ pub struct NdkInstall {
 #[derive(Deserialize, Serialize)]
 #[serde(default)]
 pub struct NdkConfig {
+    pub metadata_url: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub selected: Option<String>,
-    #[serde(skip_serializing_if = "Vec::is_empty")]
-    pub installed: Vec<NdkInstall>,
     pub install_dir: PathBuf,
-    pub metadata_url: String,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub installs: Vec<NdkInstall>,
 }
 
 impl NdkConfig {
@@ -44,7 +44,7 @@ impl Default for NdkConfig {
     fn default() -> Self {
         Self {
             selected: None,
-            installed: vec![],
+            installs: Vec::new(),
             install_dir: Path::new("ndk").join("installs"),
             metadata_url:
                 "https://raw.githubusercontent.com/raftario/Meca/master/resources/metadata.json"

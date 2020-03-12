@@ -1,5 +1,5 @@
 use crate::{
-    config::Config,
+    config::{Config, NdkInstall},
     globals::{STDERR, STDOUT},
     ndk::metadata::Metadata,
     utils, with_progress, Result,
@@ -27,10 +27,10 @@ pub struct Command {
 
 impl Command {
     pub fn run(self) -> Result<()> {
-        let config = Config::read()?;
+        let mut config = Config::read()?;
 
         if let Some(v) = &self.version {
-            if config.ndk.installed.iter().any(|i| &i.name == v) {
+            if config.ndk.installs.iter().any(|i| &i.name == v) {
                 STDERR.write_line(&format!("Android NDK {} is already installed.", v))?;
                 return Ok(());
             }
@@ -104,11 +104,18 @@ impl Command {
         let mut cursor = Cursor::new(bin);
         let mut zip = ZipArchive::new(&mut cursor)?;
 
-        with_progress!(
-            utils::unzip(&mut zip, &config.ndk.install_dir()),
+        let install_dir = with_progress!(
+            utils::unzip(&mut zip, &config.ndk.install_dir().join(&version.name)),
             "Unzipping"
         )
         .context("Can't unzip Android NDK")?;
+
+        config.ndk.installs.push(NdkInstall {
+            name: version.name.clone(),
+            path: install_dir,
+        });
+        config.ndk.selected = Some(version.name.clone());
+        config.write()?;
 
         STDOUT.write_line("Done.")?;
         Ok(())

@@ -1,9 +1,11 @@
 use crate::Result;
+use anyhow::anyhow;
 use std::{
     fs,
     io::{self, Read, Seek},
-    path::Path,
+    path::{Path, PathBuf},
 };
+use walkdir::WalkDir;
 use zip::ZipArchive;
 
 #[macro_export]
@@ -20,7 +22,7 @@ macro_rules! with_progress {
     }};
 }
 
-pub fn unzip<P: AsRef<Path>, R: Read + Seek>(zip: &mut ZipArchive<R>, dir: P) -> Result<()> {
+pub fn unzip<P: AsRef<Path>, R: Read + Seek>(zip: &mut ZipArchive<R>, dir: P) -> Result<PathBuf> {
     for i in 0..zip.len() {
         let mut file = zip.by_index(i)?;
         let outpath = dir.as_ref().join(file.sanitized_name());
@@ -47,5 +49,16 @@ pub fn unzip<P: AsRef<Path>, R: Read + Seek>(zip: &mut ZipArchive<R>, dir: P) ->
             }
         }
     }
-    Ok(())
+
+    let mut walkdir = WalkDir::new(&dir)
+        .min_depth(1)
+        .max_depth(1)
+        .into_iter()
+        .peekable();
+    let first = walkdir.next().ok_or_else(|| anyhow!("Empty zip"))??;
+    if first.file_type().is_dir() && walkdir.peek().is_none() {
+        Ok(first.into_path())
+    } else {
+        Ok(dir.as_ref().to_owned())
+    }
 }

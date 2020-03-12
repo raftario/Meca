@@ -12,7 +12,7 @@ impl Command {
     pub fn run(self) -> Result<()> {
         let installed: Vec<String> = Config::read()?
             .ndk
-            .installed
+            .installs
             .into_iter()
             .map(|i| i.name)
             .collect();
