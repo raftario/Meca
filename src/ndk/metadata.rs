@@ -1,6 +1,5 @@
-use crate::{config::Config, Result};
+use crate::{config::Config, with_progress, Result};
 use anyhow::Context;
-use indicatif::ProgressBar;
 use serde::Deserialize;
 use std::io::Read;
 
@@ -38,11 +37,7 @@ impl Version {
         Ok(result)
     }
     pub fn download_with_progress(&self) -> Result<Vec<u8>> {
-        let p = ProgressBar::new_spinner();
-        p.set_message("Downloading Android NDK");
-        let result = self.download()?;
-        p.finish_and_clear();
-        Ok(result)
+        Ok(with_progress!(self.download()?, "Downloading Android NDK"))
     }
 }
 
@@ -64,10 +59,6 @@ impl Metadata {
         serde_json::from_str(&contents).context("Invalid NDK versions metadata")
     }
     pub fn fetch_with_progress() -> Result<Self> {
-        let p = ProgressBar::new_spinner();
-        p.set_message("Fetching metadata");
-        let result = Self::fetch()?;
-        p.finish_and_clear();
-        Ok(result)
+        Ok(with_progress!(Self::fetch()?, "Fetching metadata"))
     }
 }

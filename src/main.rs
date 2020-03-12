@@ -8,6 +8,7 @@ mod commands;
 mod config;
 mod globals;
 mod ndk;
+mod utils;
 
 use crate::globals::STDERR;
 use std::process;
