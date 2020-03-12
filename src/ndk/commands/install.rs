@@ -74,6 +74,23 @@ impl Command {
             }
         }
 
+        if let Some(l) = &metadata.terms {
+            let accept = self.agree
+                || Confirmation::new()
+                    .with_text(&format!(
+                        "I have read and agree with the terms & conditions ({}).",
+                        l
+                    ))
+                    .default(false)
+                    .interact_on(&*STDOUT)?;
+            if !accept {
+                STDERR.write_line(
+                    "You must agree with the terms & conditions to download the Android NDK.",
+                )?;
+                return Ok(());
+            }
+        }
+
         let bin = version.download_with_progress()?;
 
         if !version.is_valid_with_progress(&bin) {
@@ -84,6 +101,7 @@ impl Command {
         let mut cursor = Cursor::new(bin);
         let zip = ZipArchive::new(&mut cursor)?;
 
+        STDOUT.write_line("Done.")?;
         Ok(())
     }
 }
