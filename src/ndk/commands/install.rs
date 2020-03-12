@@ -15,21 +15,11 @@ pub struct Command {
     /// Skips prompts and automatically accepts the terms & conditions
     agree: bool,
 
-    #[structopt(
-        short = "V",
-        long = "version",
-        name = "VERSION",
-        required_if("agree", "true")
-    )]
+    #[structopt(short = "V", long = "version", name = "VERSION")]
     /// Specifies the version to install
     version: Option<String>,
 
-    #[structopt(
-        short = "p",
-        long = "path",
-        name = "PATH",
-        required_if("agree", "true")
-    )]
+    #[structopt(short = "p", long = "path", name = "PATH")]
     /// Specifies the path of the installation directory
     path: Option<PathBuf>,
 }
@@ -55,22 +45,27 @@ impl Command {
                 }
             },
             None => {
-                &metadata.versions[Select::new()
-                    .with_prompt("Version to install")
-                    .items(
-                        &metadata
-                            .versions
-                            .iter()
-                            .map(|ver| &ver.name)
-                            .collect::<Vec<&String>>(),
-                    )
-                    .default(0)
-                    .interact_on(&*STDOUT)?]
+                let idx = if self.agree {
+                    0
+                } else {
+                    Select::new()
+                        .with_prompt("Version to install")
+                        .items(
+                            &metadata
+                                .versions
+                                .iter()
+                                .map(|ver| &ver.name)
+                                .collect::<Vec<&String>>(),
+                        )
+                        .default(0)
+                        .interact_on(&*STDOUT)?
+                };
+                &metadata.versions[idx]
             }
         };
 
         if version.download.checksum.is_none() {
-            let continue_anyways =  !Confirmation::new()
+            let continue_anyways =  self.agree || !Confirmation::new()
                 .with_text("This version doesn't have an associated checksum and won't be validated. Download it anyways?")
                 .default(false)
                 .interact_on(&*STDOUT)?;
