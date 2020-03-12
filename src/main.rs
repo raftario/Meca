@@ -39,10 +39,6 @@ impl Opt {
 
 fn main() {
     let opt = Opt::from_args();
-
-    #[cfg(debug_assertions)]
-    println!("{:#?}", opt);
-
     if let Err(e) = opt.run() {
         STDERR.write_line(&format!("{:#}", e)).unwrap_or_else(|_| {
             process::exit(-1);

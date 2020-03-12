@@ -2,8 +2,9 @@ use crate::{
     config::Config,
     globals::{STDERR, STDOUT},
     ndk::metadata::Metadata,
-    Result,
+    utils, with_progress, Result,
 };
+use anyhow::Context;
 use dialoguer::{Confirmation, Select};
 use std::{io::Cursor, path::PathBuf};
 use structopt::StructOpt;
@@ -91,6 +92,8 @@ impl Command {
             }
         }
 
+        STDOUT.write_line("You might want to do something else, this will take a while.")?;
+
         let bin = version.download_with_progress()?;
 
         if !version.is_valid_with_progress(&bin) {
@@ -99,7 +102,13 @@ impl Command {
         }
 
         let mut cursor = Cursor::new(bin);
-        let zip = ZipArchive::new(&mut cursor)?;
+        let mut zip = ZipArchive::new(&mut cursor)?;
+
+        with_progress!(
+            utils::unzip(&mut zip, &config.ndk.install_dir()),
+            "Unzipping"
+        )
+        .context("Can't unzip Android NDK")?;
 
         STDOUT.write_line("Done.")?;
         Ok(())
