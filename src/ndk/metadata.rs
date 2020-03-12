@@ -1,6 +1,7 @@
 use crate::{config::Config, with_progress, Result};
 use anyhow::Context;
 use serde::Deserialize;
+use sha1::{Digest, Sha1};
 use std::io::Read;
 
 #[derive(Deserialize)]
@@ -38,6 +39,18 @@ impl Version {
     }
     pub fn download_with_progress(&self) -> Result<Vec<u8>> {
         Ok(with_progress!(self.download()?, "Downloading Android NDK"))
+    }
+
+    pub fn is_valid(&self, data: &[u8]) -> bool {
+        let checksum = match &self.download.checksum {
+            Some(s) => s,
+            None => return true,
+        };
+        let data_checksum = format!("{:x}", Sha1::digest(data));
+        &data_checksum == checksum
+    }
+    pub fn is_valid_with_progress(&self, data: &[u8]) -> bool {
+        with_progress!(self.is_valid(data), "Validating checksum")
     }
 }
 

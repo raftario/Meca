@@ -4,7 +4,7 @@ use crate::{
     ndk::metadata::Metadata,
     Result,
 };
-use dialoguer::Select;
+use dialoguer::{Confirmation, Select};
 use std::{io::Cursor, path::PathBuf};
 use structopt::StructOpt;
 use zip::ZipArchive;
@@ -69,13 +69,25 @@ impl Command {
             }
         };
 
+        if version.download.checksum.is_none() {
+            let continue_anyways =  !Confirmation::new()
+                .with_text("This version doesn't have an associated checksum and won't be validated. Download it anyways?")
+                .default(false)
+                .interact_on(&*STDOUT)?;
+            if !continue_anyways {
+                return Ok(());
+            }
+        }
+
         let bin = version.download_with_progress()?;
+
+        if !version.is_valid_with_progress(&bin) {
+            STDERR.write_line("Download doesn't match checksum, aborting.")?;
+            return Ok(());
+        }
+
         let mut cursor = Cursor::new(bin);
         let zip = ZipArchive::new(&mut cursor)?;
-
-        for file in zip.file_names() {
-            STDOUT.write_line(file)?;
-        }
 
         Ok(())
     }
